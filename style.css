@@ -1,0 +1,934 @@
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+    font-family: sans-serif;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    background-color: #090117; 
+}
+
+/* --- Preloader Styles --- */
+.loading .navbar,
+.loading main,
+.loading #particles-js {
+    visibility: hidden;
+    opacity: 0;
+}
+
+.preloader {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #090117;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+    transition: opacity 0.75s ease, visibility 0.75s ease;
+}
+
+.preloader.hidden {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none; 
+}
+
+.logo-loader {
+    width: 80%;
+    max-width: 400px;
+}
+
+.logo-text {
+    font-family: 'Segoe UI', 'Roboto', 'Helvetica Neue', sans-serif;
+    font-size: 50px;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    fill: transparent; 
+    stroke: #a994ee;
+    stroke-width: 1;
+    /* A long dash array to cover the text, and an equal offset to hide it */
+    stroke-dasharray: 950; 
+    stroke-dashoffset: 950;
+    /* Chain two animations: draw the outline, then fill with the gradient */
+    animation: draw-logo 1s ease-in-out forwards, fill-logo 0.5s ease-in 1s forwards;
+}
+
+/* Particle.js Background */
+#particles-js {
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
+    top: 0;
+    left: 0;
+    z-index: 0;
+}
+
+@keyframes draw-logo {
+    to {
+        stroke-dashoffset: 0;
+    }
+}
+
+@keyframes fill-logo {
+    to {
+        /* logosss */
+        fill: url(#logo-gradient);
+    }
+}
+
+/* Page Loading Animations */
+@keyframes fade-in-down {
+    from { opacity: 0; transform: translateY(-20px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fade-in-up {
+    from { opacity: 0; transform: translateY(20px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fade-in {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+}
+
+@keyframes card-fade-in {
+    from {
+        opacity: 0;
+        transform: scale(0.9);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+@keyframes slide-in-left {
+    from { opacity: 0; transform: translateX(-50px); }
+    to   { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes slide-in-right {
+    from { opacity: 0; transform: translateX(50px); }
+    to   { opacity: 1; transform: translateX(0); }
+}
+
+/* This ensures the main content sits on top of the new background effect */
+main {
+    position: relative;
+    z-index: 1;
+}
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.8em 3em; /* Reduced vertical padding */
+    color: rgb(242, 246, 246); /* Set text color for children */
+    /* Animate on page load */
+    opacity: 0;
+    animation: fade-in-down 0.6s ease-out forwards;
+    /* --- Added for sticky behavior --- */
+    position: sticky;
+    top: 0;
+    z-index: 1000; /* High z-index to stay on top */
+    /* Use a semi-transparent background to see the rotating image */
+    background-color: rgba(9, 1, 23, 0.75);
+    -webkit-backdrop-filter: blur(10px); /* Frosted glass effect for Safari */
+    backdrop-filter: blur(10px); /* Frosted glass effect */
+}
+
+.nav-links {
+    display: flex;
+    gap: 1.7em;
+    list-style: none; /* Remove default bullet points */
+    padding: 0;       /* Remove default list padding */
+    font-size: 17px; /* Reduced font size */
+    transform: translateX(2em); /* Nudge the links to the right */
+}
+
+.nav-links a {
+    /* 1. Set the background to a gradient. */
+    background: conic-gradient(at bottom left, #edecf0, #6a77dc, #7173e3);
+
+    /* 2. Clip the background to the text. */
+    -webkit-background-clip: text; /* For browser compatibility */
+    background-clip: text;
+
+    /* 3. Set the text color to transparent to reveal the gradient. */
+    color: transparent;
+    text-decoration: none;
+    transition: filter 0.6s ease; /* Adjusted transition for a quicker response */
+    position: relative; /* This is crucial for positioning the underline */
+}
+
+.nav-links a:hover {
+    filter: brightness(3.5);
+    transform: scale(1.2);
+     /* Toned down the brightness for a subtler effect */
+}
+
+.nav-links a::after {
+    content: ''; /* Required for a pseudo-element to be generated */
+    position: absolute;
+    width: 100%; 
+    transform: scaleX(0); /* This makes the line initially invisible */
+    height: 3px;
+    bottom: -5px; /* Adjusts the space between the text and the line */
+    left: 0;
+    background-color: #a994ee; /* Using a color from your text gradient */
+    transform-origin: bottom left; /* The line will draw from left to right */
+    transition: transform 0.6s ease-out;
+}
+
+.nav-links a:hover::after {
+    transform: scaleX(1); /* This scales the line to its full width on hover */
+}
+
+.logo {
+    font-size: 30px;
+    
+    /* Future logo styles can go here */
+}
+
+.hamburger-menu {
+    display: none; /* Hidden on desktop */
+    cursor: pointer;
+}
+
+.bar {
+    display: block;
+    width: 25px;
+    height: 3px;
+    margin: 5px auto;
+    background-color: rgb(242, 246, 246);
+    transition: all 0.3s ease-in-out;
+}
+
+.hero-section {
+    display: flex;
+    flex-direction: column; /* Stack the icon container and h1 vertically */
+    justify-content: center;
+    align-items: center;
+    min-height: 80vh; /* Takes up most, but not all, of the screen height */
+    text-align: center;
+    padding: 0 2em; /* Add some padding for smaller screens */
+}
+.hero-section h1 {
+    /* The margin is now controlled by the icon-container above */
+    margin-top: 0; /* Remove default browser margin for precise control */
+    font-size: 3.3rem;
+    color: #f2f5f5;
+    line-height: 1.3; /* This increases the space between lines of text */
+    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.7);
+    /* Animate on page load with a delay */
+    opacity: 0;
+    animation: fade-in-up 0.8s ease-out 0.6s forwards;
+}
+
+/* -- Profile Icon & Robot Wrapper -- */
+.profile-icon-wrapper {
+    position: relative; /* This is the anchor for the robot's absolute positioning */
+    display: flex; /* Ensures it takes up only the space of the icon inside it */
+    justify-content: center;
+    align-items: center;
+}
+
+/* -- Welcome Robot -- */
+.robot-container {
+    position: absolute;
+    width: 120px;
+    height: 120px;
+    bottom: 90%; /* Position it just above the icon */
+    left: 50%;
+    
+    /* Initial state: hidden and slightly down */
+    opacity: 0;
+    transform: translate(-50%, 10px);
+    pointer-events: none;
+    transition: opacity 0.4s ease-out, transform 0.4s ease-out;
+}
+
+.robot-container.visible {
+    /* Visible state: shown and floated up */
+    opacity: 1;
+    transform: translate(-50%, -15px);
+    pointer-events: auto;
+}
+
+.welcome-robot {
+    width: 100%;
+    height: 100%;
+}
+
+.welcome-robot * {
+    stroke: #a994ee;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    fill: none;
+}
+
+.welcome-robot .robot-antenna-light {
+    fill: #a994ee;
+    animation: robot-antenna-glow 3s infinite ease-in-out;
+}
+
+.welcome-robot .robot-eye-sparkle {
+    fill: #ffffff;
+    stroke: none;
+}
+
+.welcome-robot .robot-blush {
+    fill: #e4a6c2; /* A soft pink for the blush */
+    stroke: none;
+    opacity: 0.7;
+}
+
+.welcome-robot .robot-heart {
+    fill: #e4a6c2; /* A soft pink, like the blush */
+    stroke: #a994ee;
+    stroke-width: 2;
+    transform-origin: 50px 65px; /* Center of the heart */
+    animation: robot-heart-pulse 2s infinite 1s ease-in-out;
+}
+
+.welcome-robot .wave-text {
+    font-family: 'Arial Rounded MT Bold', 'Helvetica Rounded', Arial, sans-serif;
+    font-size: 12px;
+    font-weight: bold;
+    fill: #a994ee;
+    stroke: none;
+    opacity: 0;
+    transform-origin: center;
+    animation: wave-text-fade 4s infinite 1s ease-in-out;
+}
+
+.welcome-robot .robot-eye {
+    animation: robot-blink 5s infinite 1s ease-in-out;
+}
+
+.welcome-robot .robot-head {
+    transform-origin: center 43px; /* Base of the head */
+    animation: robot-head-bob 6s infinite 0.5s ease-in-out;
+}
+
+.welcome-robot .waving-arm {
+    transform-origin: 75px 55px; /* Joint of the arm */
+    animation: robot-wave 4s infinite 1s ease-in-out;
+}
+
+.robot-leg-left {
+    transform-origin: 40px 83px; /* Top-center of the leg */
+    animation: robot-leg-dangle 2s infinite ease-in-out;
+}
+
+.robot-leg-right {
+    transform-origin: 60px 83px; /* Top-center of the leg */
+    animation: robot-leg-dangle 2s infinite 0.2s ease-in-out; /* Staggered start */
+}
+
+@keyframes robot-blink {
+    0%, 95%, 100% { transform: scaleY(1); }
+    97.5% { transform: scaleY(0.1); }
+}
+
+@keyframes robot-head-bob {
+    0%, 100% { transform: translateY(0) rotate(0); }
+    50% { transform: translateY(-3px) rotate(1.5deg); }
+}
+
+@keyframes robot-wave {
+    /* Arm is down for longer */
+    0%, 60%, 100% { transform: rotate(0deg); }
+    /* Hold the wave for longer */
+    10%, 50% { transform: rotate(20deg); }
+}
+
+@keyframes robot-leg-dangle {
+    0%, 100% {
+        transform: rotate(-8deg);
+    }
+    50% {
+        transform: rotate(8deg);
+    }
+}
+
+@keyframes robot-heart-pulse {
+    0%, 100% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.1);
+    }
+}
+
+@keyframes wave-text-fade {
+    /* Text is hidden */
+    0%, 8%, 60%, 100% {
+        opacity: 0;
+        transform: scale(0.5);
+    }
+    /* Text appears and stays */
+    15%, 50% {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+@keyframes robot-antenna-glow {
+    0%, 100% {
+        filter: drop-shadow(0 0 1px #a994ee);
+    }
+    50% {
+        filter: drop-shadow(0 0 5px #a994ee);
+    }
+}
+
+.icon-container {
+    display: flex;
+    gap: 0.7em; /* Space between each icon circle */
+    margin-bottom: 1.5em; /* Creates a controlled space between icons and the title */
+    /* Animate on page load with a delay */
+    opacity: 0;
+    animation: fade-in-up 0.8s ease-out 0.3s forwards;
+    z-index: 1; /* Ensure icons are below the mobile nav menu */
+}
+
+.icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 60px;
+    height: 60px;
+    border: 3px solid rgba(95, 34, 194, 0.887);
+    border-radius: 50%; /* This makes the element a perfect circle */
+    cursor: pointer;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    position: relative; /* Needed for tooltip positioning */
+}
+
+.icon:hover {
+    transform: scale(1.1); /* Adds zoom effect */
+    box-shadow: 0 0 25px 7px rgba(95, 34, 194, 0.8); /* Increased blur, spread, and opacity for a stronger glow */
+}
+
+/* -- Icon Tooltip -- */
+.icon[data-tooltip]::before,
+.icon[data-tooltip]::after {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none; /* Prevents tooltip from interfering with mouse events */
+    transition: opacity 0.3s ease, transform 0.3s ease;
+    z-index: 20; /* Ensure tooltip is above other elements */
+}
+
+/* The tooltip text box */
+.icon[data-tooltip]::before {
+    content: attr(data-tooltip);
+    bottom: 125%; /* Position above the icon */
+    background-color: #a994ee;
+    color: #090117;
+    padding: 6px 12px;
+    border-radius: 5px;
+    font-size: 14px;
+    font-weight: bold;
+    white-space: nowrap; 
+}
+
+/* The small triangle pointing to the icon */
+.icon[data-tooltip]::after {
+    content: '';
+    bottom: calc(125% - 5px); /* Position just below the tooltip box */
+    border: 5px solid transparent;
+    border-top-color: #a994ee;
+}
+
+.icon[data-tooltip]:hover::before,
+.icon[data-tooltip]:hover::after {
+    opacity: 1;
+    visibility: visible;
+    transform: translateX(-50%) translateY(-5px); /* Animate upwards on hover */
+}
+
+/* Target the individual parts of the SVG for animation */
+.icon polyline {
+    /* A spring-like transition to mimic the original animation */
+    transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.icon:hover .left-bracket {
+    transform: translateX(-2px);
+}
+
+.icon:hover .right-bracket {
+    transform: translateX(2px);
+}
+
+/* -- User Icon Animation -- */
+
+/* Keyframes define the animation from start to finish. This allows it to replay on every hover. */
+@keyframes draw-circle {
+    /* Start invisible and scaled down */
+    from {
+        stroke-dashoffset: 32;
+        transform: scale(0.5);
+    }
+    /* End visible and full size */
+    to {
+        stroke-dashoffset: 0;
+        transform: scale(1);
+    }
+}
+
+@keyframes draw-path {
+    /* Start invisible */
+    from { stroke-dashoffset: 42; }
+    /* End visible */
+    to { stroke-dashoffset: 0; }
+}
+
+/* Default state: icon is visible */
+.user-icon-circle {
+    stroke-dasharray: 32; /* Circumference of circle (r=5) */
+    stroke-dashoffset: 0;
+    transform-origin: center;
+}
+
+.user-icon-path {
+    stroke-dasharray: 42; /* Length of the path */
+    stroke-dashoffset: 0;
+}
+
+/* On hover, trigger the keyframe animations */
+.icon:hover .user-icon-circle {
+    animation: draw-circle 0.4s ease-in-out forwards;
+}
+
+.icon:hover .user-icon-path {
+    animation: draw-path 0.4s ease-in-out 0.2s forwards;
+}
+
+/* -- LinkedIn Icon Animation -- */
+@keyframes drop-in {
+    0% {
+        transform: translateY(-40px);
+        opacity: 0;
+    }
+    70% {
+        transform: translateY(5px); /* Creates the bounce effect */
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+/* Default state: visible and in place */
+.linkedin-i, .linkedin-n {
+    transform: translateY(0);
+    opacity: 1;
+}
+
+/* On hover, trigger the staggered drop-in animation */
+.icon:hover .linkedin-i {
+    animation: drop-in 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+}
+
+.icon:hover .linkedin-n {
+    animation: drop-in 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275) 0.15s forwards;
+}
+
+/* -- About Me Section -- */
+.about-section {
+    min-height: 100vh; /* Make the section take up the full viewport height */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 5em 2em;
+    color: #f2f5f5;
+    box-sizing: border-box; /* Ensures padding is included in the height calculation */
+}
+
+.about-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 4em;
+    max-width: 1200px;
+    width: 100%;
+}
+
+.about-text {
+    flex: 1; /* Allows the text to take up available space */
+    max-width: 600px;
+    /* The container itself is now visible by default; children handle their own animation */
+}
+
+.about-text h2 {
+    font-size: 2.8rem;
+    margin-bottom: 0.8em;
+    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.7);
+}
+
+.about-text p {
+    font-size: 1.2rem;
+    line-height: 1.7;
+    color: #d1d5db; /* A slightly softer white for readability */
+    min-height: 120px; /* Prevents layout jump during typing animation */
+}
+
+.about-buttons {
+    margin-top: 2em;
+    display: flex;
+    gap: 1em;
+    opacity: 0; /* Hide for animation */
+}
+
+.btn-primary, .btn-secondary {
+    padding: 0.8em 1.8em;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 1rem;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    display: inline-block;
+}
+
+.btn-primary {
+    background: linear-gradient(to right, #a994ee, #7173e3);
+    color: #ffffff;
+}
+
+.btn-primary:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 20px rgba(169, 148, 238, 0.5);
+}
+
+.btn-secondary {
+    background-color: transparent;
+    color: #a994ee;
+    border: 2px solid #a994ee;
+}
+
+.btn-secondary:hover {
+    background-color: rgba(169, 148, 238, 0.1);
+    transform: scale(1.05);
+}
+
+.about-image {
+    flex-shrink: 0; /* Prevents the image from shrinking */
+    opacity: 0; /* Initially hidden for scroll animation */
+    position: relative; /* Anchor for the pseudo-element */
+    transition: transform 0.3s ease-out;
+}
+
+.about-image:hover {
+    transform: translateY(-10px); /* Add a subtle lift on hover */
+}
+
+.about-image img {
+    width: 350px;
+    height: 350px;
+    object-fit: cover; /* Ensures the image covers the area without distortion */
+    border-radius: 50%; /* Makes the image circular */
+    border: 5px solid #a994ee;
+    position: relative; /* To ensure it sits above the pseudo-element */
+    z-index: 2;
+}
+
+/* --- Scroll Animations for About Section --- */
+/* Animate the title and buttons, leaving paragraphs for the JS typing effect */
+.about-section.visible .about-buttons {
+    animation: slide-in-left 0.8s ease-out 0.1s forwards;
+}
+.about-section.visible .about-image {
+    /* Replaced slide-in with a simple fade-in to keep the image stationary */
+    animation: fade-in 0.8s ease-out 0.2s forwards;
+}
+
+/* The new decorative frame for the about image */
+.about-image::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 100%;
+    height: 100%;
+    border: 3px dashed #7173e3;
+    border-radius: 50%;
+    z-index: 1;
+    animation: spin 20s linear infinite;
+    transform: translate(-50%, -50%);
+}
+
+@keyframes spin {
+    from { transform: translate(-50%, -50%) rotate(0deg); }
+    to { transform: translate(-50%, -50%) rotate(360deg); }
+}
+/* -- Skills Section -- */
+.skills-section {
+    padding: 5em 2em;
+    text-align: center;
+    color: #f2f5f5;
+    opacity: 0; /* Initially hidden for scroll animation */
+}
+
+.skills-section.visible {
+    animation: fade-in-up 0.8s ease-out forwards;
+}
+
+.skills-header {
+    margin-bottom: 3em;
+}
+
+.skills-header h2 {
+    font-size: 2.8rem;
+    margin-bottom: 0.5em;
+    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.7);
+}
+
+.skills-header p {
+    font-size: 1.2rem;
+    color: #d1d5db;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.skills-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2em;
+    max-width: 700px; /* Made the container narrower for a tighter 3x2 grid */
+    margin: 0 auto;
+}
+
+.skill-card {
+    background-color: transparent;
+    padding: 2em 1em;
+    border: none;
+    transition: transform 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1em;
+}
+
+.skill-card:hover {
+    transform: translateY(-10px);
+}
+
+.skill-card img { width: 60px; height: 60px; }
+.skill-card h3 { margin: 0; font-size: 1.2rem; font-weight: normal; }
+/* -- Responsive Design for Mobile -- */
+@media (max-width: 600px) { /* Changed breakpoint to target smaller, phone-sized screens */
+    .nav-links {
+        position: fixed; /* Use fixed to cover the screen */
+        left: -100%; /* Start off-screen */
+        top: 0;
+        flex-direction: column;
+        justify-content: center;
+        background-color: #150050; /* A dark background for the menu */
+        width: 100%;
+        height: 100%;
+        text-align: center;
+        transition: left 0.4s ease-in-out;
+        gap: 1rem;
+        transform: none; /* Reset the desktop transform */
+        padding: 0;
+        z-index: 10; /* Ensure menu is on top */
+    }
+
+    .nav-links li {
+        padding: 1rem 0;
+    }
+
+    .nav-links.active {
+        left: 0; /* Slide into view */
+    }
+
+    .hamburger-menu {
+        display: block; /* Show the hamburger icon */
+        z-index: 11; /* Ensure it's above other content, including the nav menu */
+    }
+
+    .hamburger-menu.active .bar:nth-child(2) {
+        opacity: 0; /* Hide the middle bar */
+    }
+
+    .hamburger-menu.active .bar:nth-child(1) {
+        transform: translateY(8px) rotate(45deg); /* Top bar rotates */
+    }
+
+    .hamburger-menu.active .bar:nth-child(3) {
+        transform: translateY(-8px) rotate(-45deg); /* Bottom bar rotates */
+    }
+
+    .hero-section h1 {
+        font-size: 2.5rem; /* Adjust font size for smaller screens */
+    }
+
+    .icon-container {
+        transform: scale(0.9); /* Slightly scale down icons */
+    }
+
+    .about-container {
+        flex-direction: column; /* Stack text and image vertically */
+        text-align: center;
+    }
+
+    .about-image img {
+        width: 250px; /* Smaller image for mobile */
+        height: 250px;
+    }
+
+    .skills-grid {
+        grid-template-columns: repeat(2, 1fr); /* Better layout for mobile */
+    }
+
+    .robot-container {
+        /* Hide the robot on small screens to avoid layout issues */
+        display: none;
+    }
+}
+
+/* -- Contact Section -- */
+.contact-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 5em 2em;
+    text-align: center;
+    color: #f2f5f5;    
+    background-color: rgba(17, 3, 42, 0.85); /* Semi-transparent background */
+}
+
+.contact-section h2 {
+    font-size: 2.8rem;
+    margin-bottom: 0.5em;
+}
+
+.contact-section p {
+    font-size: 1.2rem;
+    color: #d1d5db;
+    max-width: 600px;
+    margin-bottom: 2.5em;
+}
+
+.contact-form {
+    width: 100%;
+    max-width: 700px;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5em;
+}
+
+.form-group {
+    display: flex;
+    gap: 1.5em;
+}
+
+.contact-form input,
+.contact-form textarea {
+    width: 100%;
+    padding: 1em;
+    border-radius: 8px;
+    border: 2px solid #a994ee;
+    background-color: rgba(255, 255, 255, 0.05);
+    color: #f2f5f5;
+    font-size: 1rem;
+}
+
+.btn-submit {
+    padding: 1em 2em;
+    border-radius: 8px;
+    border: none;
+    background: linear-gradient(to right, #a994ee, #7173e3);
+    color: #ffffff;
+    font-size: 1.1rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.btn-submit:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 20px rgba(169, 148, 238, 0.5);
+}
+
+#form-status {
+    margin-top: 1em;
+    font-size: 1.1rem;
+}
+
+/* -- Portfolio Page -- */
+.portfolio-section {
+    width: 100%; /* This is now a section, not a page */
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2em;
+    color: #f2f5f5;
+    box-sizing: border-box;
+    opacity: 0;
+    animation: fade-in-up 0.8s ease-out 0.2s forwards;
+}
+
+.portfolio-header { text-align: center; margin-bottom: 3em; }
+.portfolio-header h1 { font-size: 3rem; margin-bottom: 0.2em; }
+.portfolio-header p { font-size: 1.2rem; color: #d1d5db; }
+
+.portfolio-nav {
+    display: flex; gap: 2em; margin-bottom: 4em; overflow-x: auto;
+    white-space: nowrap; padding: 1em 2em; margin-left: -2em; margin-right: -2em;
+    -ms-overflow-style: none; scrollbar-width: none;
+}
+.portfolio-nav::-webkit-scrollbar { display: none; }
+
+.icon-nav-item {
+    display: flex; flex-direction: column; align-items: center; gap: 0.8em; color: #d1d5db;
+    text-decoration: none; cursor: pointer; padding: 0.8em 1.5em;
+    border: 2px solid #a994ee; border-radius: 10px;
+    margin: 5px 0; /* Add vertical margin to prevent clipping on hover */
+    transition: color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+}
+.icon-nav-item svg { width: 40px; height: 40px; stroke: #d1d5db; transition: stroke 0.3s ease; }
+.icon-nav-item:hover, .icon-nav-item.active {
+    color: #a994ee; transform: scale(1.05);
+    box-shadow: 0 0 20px 5px rgba(169, 148, 238, 0.4);
+}
+.icon-nav-item:hover svg, .icon-nav-item.active svg { stroke: #a994ee; }
+
+.portfolio-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2em; }
+.project-card {
+    background-color: rgba(17, 3, 42, 0.85); 
+    border-radius: 10px;
+    overflow: hidden;
+    border: 1px solid #a994ee;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    opacity: 0; 
+}
+.project-card.visible {
+    animation: card-fade-in 0.7s ease-out forwards;
+}
+.project-card.hide { display: none; }
+.project-card:hover { transform: translateY(-10px); box-shadow: 0 8px 25px rgba(169, 148, 238, 0.3); }
+.project-card img { width: 100%; height: 200px; object-fit: cover; display: block; }
+.card-content { padding: 1.5em; }
+.card-content h3 { margin-top: 0; margin-bottom: 0.5em; font-size: 1.5rem; }
+.card-content p { color: #d1d5db; line-height: 1.6; }
+
+@media (min-width: 601px) {
+    .portfolio-nav { justify-content: center; padding: 0; }
+}
