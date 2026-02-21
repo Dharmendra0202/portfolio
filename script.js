@@ -18,7 +18,6 @@ window.addEventListener('load', () => {
 const hamburger = document.querySelector(".hamburger-menu");
 const navLinks = document.querySelector(".nav-links");
 const heroIcons = document.querySelector(".icon-container");
-const robotContainer = document.querySelector('.robot-container');
 
 hamburger.addEventListener("click", () => {
     hamburger.classList.toggle("active");
@@ -32,24 +31,17 @@ navLinks.addEventListener("click", (e) => {
     }
 });
 
-heroIcons.addEventListener("click", (e) => {
-    const icon = e.target.closest(".icon");
-    if (!icon) return; // Exit if the click wasn't on an icon
+if (heroIcons) {
+    heroIcons.addEventListener("click", (e) => {
+        const icon = e.target.closest(".icon");
+        if (!icon) return; // Exit if the click wasn't on an icon
 
-    // If the profile icon is clicked, toggle the robot's visibility
-    if (icon.id === 'profile-icon') {
-        e.preventDefault(); // Prevent the '#' link from jumping to the top
-        if (robotContainer) {
-            robotContainer.classList.toggle('visible');
+        // Only prevent default for placeholder icons with href="#"
+        if (icon.getAttribute('href') === '#') {
+            e.preventDefault();
         }
-        return; // Stop further execution
-    }
-
-    // Only prevent default for placeholder icons with href="#"
-    if (icon.getAttribute('href') === '#') {
-        e.preventDefault();
-    }
-});
+    });
+}
 
 // -------------------- Contact Form (with EmailJS) --------------------
 const contactForm = document.getElementById("contact-form");
@@ -182,6 +174,7 @@ if (aboutSection) {
 
 observeElements('.skills-section', { threshold: 0.2 });
 observeElements('.project-card', { threshold: 0.1 });
+observeElements('.reveal-on-scroll', { threshold: 0.2 });
 
 // -------------------- Particles.js Background --------------------
 if (document.getElementById('particles-js')) {

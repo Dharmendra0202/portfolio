@@ -1,14 +1,40 @@
+:root {
+    --bg: #090117;
+    --bg-alt: rgba(17, 3, 42, 0.85);
+    --text: #f2f5f5;
+    --muted: #d1d5db;
+    --accent: #a994ee;
+    --accent-strong: #7173e3;
+    --border: rgba(169, 148, 238, 0.7);
+    --shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
+    --font-body: "Sora", sans-serif;
+    --font-heading: "Space Grotesk", sans-serif;
+}
+
+* {
+    box-sizing: border-box;
+}
+
 html {
     scroll-behavior: smooth;
 }
 
 body {
     margin: 0;
-    font-family: sans-serif;
+    font-family: var(--font-body);
     display: flex;
     flex-direction: column;
     min-height: 100vh;
-    background-color: #090117; 
+    background: radial-gradient(circle at top, rgba(60, 20, 140, 0.25), transparent 50%), var(--bg);
+    color: var(--text);
+}
+
+h1, h2, h3 {
+    font-family: var(--font-heading);
+}
+
+a {
+    color: inherit;
 }
 
 /* --- Preloader Styles --- */
@@ -45,7 +71,7 @@ body {
 }
 
 .logo-text {
-    font-family: 'Segoe UI', 'Roboto', 'Helvetica Neue', sans-serif;
+    font-family: var(--font-heading);
     font-size: 50px;
     font-weight: bold;
     text-transform: uppercase;
@@ -129,7 +155,7 @@ main {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 0.8em 3em; /* Reduced vertical padding */
+    padding: 1.1em 5em; /* Wider navbar */
     color: rgb(242, 246, 246); /* Set text color for children */
     /* Animate on page load */
     opacity: 0;
@@ -139,7 +165,7 @@ main {
     top: 0;
     z-index: 1000; /* High z-index to stay on top */
     /* Use a semi-transparent background to see the rotating image */
-    background-color: rgba(9, 1, 23, 0.75);
+    background-color: rgba(9, 1, 23, 0.92);
     -webkit-backdrop-filter: blur(10px); /* Frosted glass effect for Safari */
     backdrop-filter: blur(10px); /* Frosted glass effect */
 }
@@ -192,9 +218,9 @@ main {
 }
 
 .logo {
-    font-size: 30px;
-    
-    /* Future logo styles can go here */
+    font-size: 28px;
+    font-weight: 600;
+    letter-spacing: 0.4px;
 }
 
 .hamburger-menu {
@@ -224,12 +250,51 @@ main {
     /* The margin is now controlled by the icon-container above */
     margin-top: 0; /* Remove default browser margin for precise control */
     font-size: 3.3rem;
-    color: #f2f5f5;
+    color: #e6e8f0;
     line-height: 1.3; /* This increases the space between lines of text */
-    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.7);
+    text-shadow: 1px 1px 6px rgba(0, 0, 0, 0.6);
     /* Animate on page load with a delay */
     opacity: 0;
     animation: fade-in-up 0.8s ease-out 0.6s forwards;
+}
+
+.hero-subtitle {
+    margin: 0.6em 0 1.6em;
+    max-width: 700px;
+    font-size: 1.25rem;
+    color: var(--muted);
+    line-height: 1.6;
+    opacity: 0;
+    animation: fade-in-up 0.8s ease-out 0.75s forwards;
+}
+
+.hero-actions {
+    display: flex;
+    gap: 1em;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-bottom: 1.4em;
+    opacity: 0;
+    animation: fade-in-up 0.8s ease-out 0.9s forwards;
+}
+
+.hero-meta {
+    display: flex;
+    gap: 0.7em;
+    flex-wrap: wrap;
+    justify-content: center;
+    opacity: 0;
+    animation: fade-in-up 0.8s ease-out 1.05s forwards;
+}
+
+.pill {
+    padding: 0.4em 0.9em;
+    border-radius: 999px;
+    border: 1px solid var(--border);
+    background: rgba(169, 148, 238, 0.12);
+    color: var(--muted);
+    font-size: 0.9rem;
+    letter-spacing: 0.2px;
 }
 
 /* -- Profile Icon & Robot Wrapper -- */
@@ -587,6 +652,30 @@ main {
     min-height: 120px; /* Prevents layout jump during typing animation */
 }
 
+.about-highlights {
+    display: flex;
+    gap: 0.7em;
+    flex-wrap: wrap;
+    margin-top: 1.2em;
+}
+
+.tag-list {
+    display: flex;
+    gap: 0.6em;
+    flex-wrap: wrap;
+    margin-top: 1em;
+}
+
+.tag {
+    padding: 0.35em 0.8em;
+    border-radius: 999px;
+    border: 1px solid var(--border);
+    color: var(--muted);
+    font-size: 0.85rem;
+    letter-spacing: 0.2px;
+    background: rgba(113, 115, 227, 0.12);
+}
+
 .about-buttons {
     margin-top: 2em;
     display: flex;
@@ -700,38 +789,177 @@ main {
 .skills-header p {
     font-size: 1.2rem;
     color: #d1d5db;
-    max-width: 600px;
+    max-width: 650px;
     margin: 0 auto;
+}
+
+.skills-layout {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2.5em;
+    align-items: start;
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+.skills-focus {
+    display: grid;
+    gap: 1.5em;
+}
+
+.focus-card {
+    text-align: left;
+    padding: 1.8em;
+    background: var(--bg-alt);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    box-shadow: var(--shadow);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.focus-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 12px 28px rgba(169, 148, 238, 0.25);
+}
+
+.focus-card h3 {
+    margin: 0 0 0.6em;
+    font-size: 1.4rem;
+}
+
+.focus-card p {
+    margin: 0 0 1.2em;
+    color: var(--muted);
+    line-height: 1.6;
+}
+
+.skill-tags {
+    display: flex;
+    gap: 0.6em;
+    flex-wrap: wrap;
 }
 
 .skills-grid {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 2em;
-    max-width: 700px; /* Made the container narrower for a tighter 3x2 grid */
-    margin: 0 auto;
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    gap: 1.4em;
 }
 
 .skill-card {
-    background-color: transparent;
-    padding: 2em 1em;
-    border: none;
-    transition: transform 0.3s ease;
+    background-color: rgba(17, 3, 42, 0.6);
+    padding: 1.4em 1.1em;
+    border-radius: 14px;
+    border: 1px solid var(--border);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    gap: 1em;
+    gap: 0.8em;
 }
 
 .skill-card:hover {
-    transform: translateY(-10px);
+    transform: translateY(-8px);
+    box-shadow: 0 10px 24px rgba(169, 148, 238, 0.2);
 }
 
-.skill-card img { width: 60px; height: 60px; }
-.skill-card h3 { margin: 0; font-size: 1.2rem; font-weight: normal; }
+.skill-card img { width: 46px; height: 46px; }
+.skill-card h3 { margin: 0; font-size: 1.05rem; font-weight: 600; }
+
+.skill-meter {
+    width: 100%;
+    height: 6px;
+    background: rgba(255, 255, 255, 0.08);
+    border-radius: 999px;
+    overflow: hidden;
+}
+
+.skill-meter span {
+    display: block;
+    height: 100%;
+    background: linear-gradient(90deg, var(--accent), var(--accent-strong));
+    border-radius: 999px;
+}
+
+.skill-level {
+    font-size: 0.85rem;
+    color: var(--muted);
+}
+
+/* -- Section Header & Reveal -- */
+.section-header {
+    text-align: center;
+    margin-bottom: 3em;
+}
+
+.section-header h2 {
+    font-size: 2.6rem;
+    margin-bottom: 0.4em;
+    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.7);
+}
+
+.section-header p {
+    font-size: 1.1rem;
+    color: var(--muted);
+    max-width: 650px;
+    margin: 0 auto;
+}
+
+.reveal-on-scroll {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.reveal-on-scroll.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* -- Experience Section -- */
+.experience-section {
+    padding: 5em 2em;
+    color: var(--text);
+}
+
+.experience-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 2em;
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+.experience-card {
+    background-color: var(--bg-alt);
+    border-radius: 12px;
+    border: 1px solid var(--border);
+    padding: 2em;
+    box-shadow: var(--shadow);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.experience-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 12px 28px rgba(169, 148, 238, 0.25);
+}
+
+.experience-card h3 {
+    margin-top: 0;
+    margin-bottom: 0.6em;
+    font-size: 1.5rem;
+}
+
+.experience-card p {
+    margin: 0;
+    color: var(--muted);
+    line-height: 1.6;
+}
 /* -- Responsive Design for Mobile -- */
 @media (max-width: 600px) { /* Changed breakpoint to target smaller, phone-sized screens */
+    .navbar {
+        padding: 0.9em 1.5em;
+    }
     .nav-links {
         position: fixed; /* Use fixed to cover the screen */
         left: -100%; /* Start off-screen */
@@ -782,6 +1010,17 @@ main {
         transform: scale(0.9); /* Slightly scale down icons */
     }
 
+    .hero-actions {
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .hero-actions .btn-primary,
+    .hero-actions .btn-secondary {
+        width: min(260px, 100%);
+        text-align: center;
+    }
+
     .about-container {
         flex-direction: column; /* Stack text and image vertically */
         text-align: center;
@@ -794,6 +1033,14 @@ main {
 
     .skills-grid {
         grid-template-columns: repeat(2, 1fr); /* Better layout for mobile */
+    }
+
+    .skills-layout {
+        grid-template-columns: 1fr;
+    }
+
+    .contact-details {
+        align-items: center;
     }
 
     .robot-container {
@@ -824,6 +1071,28 @@ main {
     color: #d1d5db;
     max-width: 600px;
     margin-bottom: 2.5em;
+}
+
+.contact-details {
+    display: flex;
+    flex-direction: column;
+    gap: 0.6em;
+    margin-bottom: 2.5em;
+}
+
+.contact-link {
+    color: var(--accent);
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.contact-link:hover {
+    color: var(--text);
+}
+
+.contact-meta {
+    color: var(--muted);
+    font-size: 0.95rem;
 }
 
 .contact-form {
@@ -911,10 +1180,10 @@ main {
 
 .portfolio-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2em; }
 .project-card {
-    background-color: rgba(17, 3, 42, 0.85); 
+    background-color: var(--bg-alt); 
     border-radius: 10px;
     overflow: hidden;
-    border: 1px solid #a994ee;
+    border: 1px solid var(--border);
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
     opacity: 0; 
@@ -928,6 +1197,71 @@ main {
 .card-content { padding: 1.5em; }
 .card-content h3 { margin-top: 0; margin-bottom: 0.5em; font-size: 1.5rem; }
 .card-content p { color: #d1d5db; line-height: 1.6; }
+
+.project-links {
+    display: flex;
+    gap: 1.2em;
+    margin-top: 1.2em;
+}
+
+.text-link {
+    color: var(--accent);
+    text-decoration: none;
+    font-weight: 600;
+    transition: color 0.3s ease;
+}
+
+.text-link:hover {
+    color: var(--text);
+}
+
+/* -- Footer -- */
+.footer {
+    padding: 3em 2em 2em;
+    background: rgba(9, 1, 23, 0.95);
+    border-top: 1px solid var(--border);
+}
+
+.footer-content {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 2em;
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+.footer-brand p {
+    color: var(--muted);
+    line-height: 1.6;
+}
+
+.footer-links,
+.footer-social {
+    display: flex;
+    flex-direction: column;
+    gap: 0.6em;
+}
+
+.footer a {
+    text-decoration: none;
+    color: var(--muted);
+    transition: color 0.3s ease;
+}
+
+.footer a:hover {
+    color: var(--text);
+}
+
+.footer .logo {
+    font-size: 22px;
+}
+
+.footer-bottom {
+    text-align: center;
+    margin-top: 2em;
+    color: var(--muted);
+    font-size: 0.9rem;
+}
 
 @media (min-width: 601px) {
     .portfolio-nav { justify-content: center; padding: 0; }
