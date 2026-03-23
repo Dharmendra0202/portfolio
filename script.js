@@ -100,27 +100,6 @@ function typeWriter(element, text, speed, callback) {
     type();
 }
 
-// -------------------- Portfolio Filtering --------------------
-const portfolioNav = document.querySelector(".portfolio-nav");
-const projectCards = document.querySelectorAll(".project-card");
-
-if (portfolioNav) {
-    portfolioNav.addEventListener("click", (e) => {
-        const clickedItem = e.target.closest(".icon-nav-item");
-        if (!clickedItem) return;
-
-        e.preventDefault();
-
-        portfolioNav.querySelector(".active").classList.remove("active");
-        clickedItem.classList.add("active");
-
-        const filter = clickedItem.dataset.filter;
-        projectCards.forEach(card => {
-            card.classList.toggle("hide", filter !== "all" && card.dataset.category !== filter);
-        });
-    });
-}
-
 // -------------------- Scroll Animations --------------------
 const createObserver = (callback, options) => {
     return new IntersectionObserver((entries, observer) => {
