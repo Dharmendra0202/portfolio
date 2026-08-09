@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dharmendra Vishwakarma | Front-End Developer</title>
+    <meta name="description" content="Front-End Developer focused on responsive, accessible interfaces and clean UI engineering. View selected projects, skills, and contact details.">
+    <meta name="author" content="Dharmendra Vishwakarma">
+    <meta name="theme-color" content="#090117">
+    <meta property="og:title" content="Dharmendra Vishwakarma | Front-End Developer">
+    <meta property="og:description" content="Responsive, accessible UI engineering. View projects, skills, and contact details.">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="og-image.svg">
+    <meta property="og:url" content="/">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Dharmendra Vishwakarma | Front-End Developer">
+    <meta name="twitter:description" content="Responsive, accessible UI engineering. View projects, skills, and contact details.">
+    <meta name="twitter:image" content="og-image.svg">
+    <link rel="icon" href="favicon.svg" type="image/svg+xml">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Sora:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="loading">
+    <!-- starting loader -->
+    <div class="preloader">
+        <svg class="logo-loader" width="300" height="100" viewBox="0 0 300 100">
+            <defs>
+                <linearGradient id="logo-gradient" x1="0%" y1="0%" x2="100%" y2="0%">
+                    <stop offset="0%" style="stop-color:#a994ee;stop-opacity:1" />
+                    <stop offset="100%" style="stop-color:#7173e3;stop-opacity:1" />
+                </linearGradient>
+            </defs>
+            <text text-anchor="middle" x="150" y="65" class="logo-text">Dharmendra</text>
+        </svg>
+    </div>
+
+    <!-- backround particle animation -->
+    <div id="particles-js"></div>
+
+    <nav class="navbar" aria-label="Primary">
+        <div class="logo">Dharmendra Vishwakarma</div>
+        <ul class="nav-links">
+            <li><a href="#home">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#skills">Skills</a></li>
+            <li><a href="#portfolio">Portfolio</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+        <div class="hamburger-menu">
+            <span class="bar"></span>
+            <span class="bar"></span>
+            <span class="bar"></span>
+        </div>
+    </nav>
+
+    <main>
+        <section id="home" class="hero-section">
+            <div class="icon-container">
+                <a href="https://github.com/Dharmendra0202" class="icon" data-tooltip="GitHub" target="_blank" rel="noopener noreferrer">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M9 19c-5 1.5-5-2.5-7-3"></path>
+                        <path d="M15 22v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
+                    </svg>
+                </a>
+                <div class="profile-icon-wrapper">
+                    <a href="#about" class="icon" id="profile-icon" data-tooltip="About Me">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <circle class="user-icon-circle" cx="12" cy="8" r="5"></circle>
+                            <path class="user-icon-path" d="M20 21a8 8 0 0 0-16 0"></path>
+                        </svg>
+                    </a>
+                    <!-- Cuter Welcome Robot (Commented Out) -->
+                    <!-- <div class="robot-container">
+                        <svg class="welcome-robot" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" overflow="visible">
+                            <g class="robot-head">
+                                <line x1="50" y1="18" x2="50" y2="10" stroke-width="3"></line>
+                                <circle class="robot-antenna-light" cx="50" cy="8" r="4"></circle>
+                                <rect x="35" y="18" width="30" height="25" rx="10" stroke-width="4"></rect>
+                                <circle class="robot-eye" cx="44" cy="30" r="5" fill="#f2f5f5"></circle>
+                                <circle class="robot-eye" cx="56" cy="30" r="5" fill="#f2f5f5"></circle>
+                                <circle class="robot-eye-sparkle" cx="46" cy="28" r="1.5"></circle>
+                                <circle class="robot-eye-sparkle" cx="58" cy="28" r="1.5"></circle>
+                                <ellipse class="robot-blush" cx="40" cy="37" rx="5" ry="2.5"></ellipse>
+                                <ellipse class="robot-blush" cx="60" cy="37" rx="5" ry="2.5"></ellipse>
+                            </g>
+                            <rect x="25" y="43" width="50" height="40" rx="10" stroke-width="4"></rect>
+                            <path class="robot-heart" d="M50,62 C45,56 38,58 38,62 c0,4 12,12 12,12 s12,-8 12,-12 c0,-4 -7,-6 -12,-6 z"></path>
+                            <line x1="25" y1="55" x2="10" y2="65" stroke-width="4"></line>
+                            <line class="waving-arm" x1="75" y1="55" x2="90" y2="45" stroke-width="4"></line>
+                            <text class="wave-text" x="95" y="48" text-anchor="start">Hello Guys!</text>
+                            <rect class="robot-leg robot-leg-left" x="35" y="83" width="10" height="15" rx="5" stroke-width="3"></rect>
+                            <rect class="robot-leg robot-leg-right" x="55" y="83" width="10" height="15" rx="5" stroke-width="3"></rect>
+                        </svg>
+                    </div> -->
+                </div>
+                 <a href="https://www.linkedin.com/in/dharmendra-vishwakarma-7b6716344/" class="icon" id="linkedin-icon" data-tooltip="LinkedIn" target="_blank" rel="noopener noreferrer">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <rect width="4" height="12" x="2" y="9"></rect>
+                        <circle cx="4" cy="4" r="2"></circle>
+                        <path class="linkedin-i" d="M16 8a6 6 0 0 1 6 6v7h-4v-7"></path>
+                        <path class="linkedin-n" d="M18 14a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7"></path>
+                    </svg>
+                </a>
+
+            </div>
+            <h1>Dharmendra Vishwakarma</h1>
+            <p class="hero-subtitle">Front-End Developer building fast, accessible interfaces with modern UI engineering.</p>
+            <div class="hero-actions">
+                <a href="#portfolio" class="btn-primary">View Projects</a>
+                <a href="#contact" class="btn-secondary">Contact Me</a>
+            </div>
+            <div class="hero-meta">
+                <span class="pill">Responsive UI</span>
+                <span class="pill">Accessibility-first</span>
+                <span class="pill">Performance-minded</span>
+            </div>
+        </section>
+
+        <section id="about" class="about-section" data-typed="false">
+            <div class="about-container">
+                <div class="about-text">
+                    <h2>About Me</h2>
+                    <p id="about-p1">I’m a Front-End Developer focused on crafting responsive, accessible interfaces with clean, maintainable code. I enjoy translating complex requirements into intuitive, fast, and delightful user experiences.</p>
+                    <p id="about-p2">I collaborate closely with designers and stakeholders, care about performance and semantics, and build consistent UI patterns that scale. I’m always sharpening my craft through hands-on projects and modern tooling.</p>
+                    <div class="about-highlights">
+                        <span class="tag">Design-to-code</span>
+                        <span class="tag">Accessibility</span>
+                        <span class="tag">UI systems</span>
+                        <span class="tag">Performance</span>
+                    </div>
+                    <div class="about-buttons">
+                        <a href="#portfolio" class="btn-primary">View My Work</a>
+                        <a href="Dharmendra_vish.pdf" class="btn-secondary" download>Download CV</a>
+                    </div>
+                </div>
+                <div class="about-image">
+                    <img src="images/profile.jpg" alt="A portrait of Dharmendra Vishwakarma">
+                </div>
+            </div>
+        </section>
+
+        <section id="skills" class="skills-section">
+            <div class="skills-header">
+                <h2>Skills & Tooling</h2>
+                <p>Core front-end strengths plus the tools I use to ship polished UI.</p>
+            </div>
+            <div class="skills-layout">
+                <div class="skills-focus">
+                    <div class="focus-card">
+                        <h3>Front-End Core</h3>
+                        <p>Semantic HTML, modern CSS, and scalable JavaScript patterns.</p>
+                        <div class="skill-tags">
+                            <span class="tag">HTML5</span>
+                            <span class="tag">CSS3</span>
+                            <span class="tag">JavaScript</span>
+                        </div>
+                    </div>
+                    <div class="focus-card">
+                        <h3>UI Engineering</h3>
+                        <p>Component-driven systems, responsive layouts, and motion.</p>
+                        <div class="skill-tags">
+                            <span class="tag">React</span>
+                            <span class="tag">Design Systems</span>
+                            <span class="tag">Animations</span>
+                        </div>
+                    </div>
+                    <div class="focus-card">
+                        <h3>Performance & A11y</h3>
+                        <p>Fast load times and accessible interactions with best practices.</p>
+                        <div class="skill-tags">
+                            <span class="tag">Lighthouse</span>
+                            <span class="tag">WCAG</span>
+                            <span class="tag">Optimization</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="skills-grid">
+                    <div class="skill-card">
+                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg" alt="HTML5 Icon">
+                        <h3>HTML5</h3>
+                        <div class="skill-meter"><span style="width: 92%"></span></div>
+                        <span class="skill-level">Advanced</span>
+                    </div>
+                    <div class="skill-card">
+                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg" alt="CSS3 Icon">
+                        <h3>CSS3</h3>
+                        <div class="skill-meter"><span style="width: 90%"></span></div>
+                        <span class="skill-level">Advanced</span>
+                    </div>
+                    <div class="skill-card">
+                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" alt="JavaScript Icon">
+                        <h3>JavaScript</h3>
+                        <div class="skill-meter"><span style="width: 85%"></span></div>
+                        <span class="skill-level">Advanced</span>
+                    </div>
+                    <div class="skill-card">
+                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" alt="React Icon">
+                        <h3>React</h3>
+                        <div class="skill-meter"><span style="width: 80%"></span></div>
+                        <span class="skill-level">Proficient</span>
+                    </div>
+                    <div class="skill-card">
+                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg" alt="Node.js Icon">
+                        <h3>Node.js</h3>
+                        <div class="skill-meter"><span style="width: 72%"></span></div>
+                        <span class="skill-level">Proficient</span>
+                    </div>
+                    <div class="skill-card">
+                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/figma/figma-original.svg" alt="Figma Icon">
+                        <h3>Figma</h3>
+                        <div class="skill-meter"><span style="width: 78%"></span></div>
+                        <span class="skill-level">Proficient</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+        <section id="portfolio" class="portfolio-section">
+            <div class="portfolio-header">
+                <span class="contact-eyebrow">My Work</span>
+                <h2>Selected Projects</h2>
+                <p>A couple of things I've built recently.</p>
+            </div>
+
+            <div class="portfolio-grid">
+                <article class="project-card" style="background-image: url('images/food-by-me.png')">
+                    <div class="card-overlay">
+                        <a class="project-btn-primary" href="https://food-by-me.vercel.app/" target="_blank" rel="noopener noreferrer">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+                            Visit Site
+                        </a>
+                    </div>
+                </article>
+                    <div class="card-overlay">
+                        <a class="project-btn-primary" href="#" target="_blank" rel="noopener noreferrer">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+                            Download APK
+                        </a>
+                    </div>
+                </article>
+            </div>
+        </section>
+
+        <section id="contact" class="contact-section">
+            <div class="contact-inner">
+                <div class="contact-left">
+                    <span class="contact-eyebrow">Let's work together</span>
+                    <h2>Get In Touch</h2>
+                    <p>Open to front-end opportunities, freelance projects, and collaborations. Reach out and I'll get back to you promptly.</p>
+                    <div class="contact-info-list">
+                        <a href="mailto:dv45564@gmail.com" class="contact-info-item">
+                            <span class="contact-info-icon">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <rect x="2" y="4" width="20" height="16" rx="2"></rect>
+                                    <path d="m22 7-8.97 5.7a1 1 0 0 1-1.06 0L2 7"></path>
+                                </svg>
+                            </span>
+                            <div>
+                                <span class="contact-info-label">Email</span>
+                                <span class="contact-info-value">dv45564@gmail.com</span>
+                            </div>
+                        </a>
+                        <a href="https://www.linkedin.com/in/dharmendra-vishwakarma-7b6716344/" class="contact-info-item" target="_blank" rel="noopener noreferrer">
+                            <span class="contact-info-icon">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <rect width="4" height="12" x="2" y="9"></rect>
+                                    <circle cx="4" cy="4" r="2"></circle>
+                                    <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7"></path>
+                                </svg>
+                            </span>
+                            <div>
+                                <span class="contact-info-label">LinkedIn</span>
+                                <span class="contact-info-value">dharmendra-vishwakarma-7b6716344</span>
+                            </div>
+                        </a>
+                        <a href="https://github.com/Dharmendra0202" class="contact-info-item" target="_blank" rel="noopener noreferrer">
+                            <span class="contact-info-icon">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M9 19c-5 1.5-5-2.5-7-3"></path>
+                                    <path d="M15 22v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
+                                </svg>
+                            </span>
+                            <div>
+                                <span class="contact-info-label">GitHub</span>
+                                <span class="contact-info-value">Dharmendra0202</span>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                <div class="contact-right">
+                    <form id="contact-form" class="contact-form">
+                        <div class="form-group">
+                            <div class="input-wrapper">
+                                <label for="name">Full Name</label>
+                                <input type="text" id="name" name="name" placeholder="John Doe" autocomplete="name" required>
+                            </div>
+                            <div class="input-wrapper">
+                                <label for="email">Email Address</label>
+                                <input type="email" id="email" name="email" placeholder="john@example.com" autocomplete="email" required>
+                            </div>
+                        </div>
+                        <div class="input-wrapper">
+                            <label for="message">Message</label>
+                            <textarea id="message" name="message" placeholder="Tell me about your project or opportunity..." rows="6" autocomplete="off" required></textarea>
+                        </div>
+                        <button type="submit" class="btn-submit">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></svg>
+                            Send Message
+                        </button>
+                        <p id="form-status"></p>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-brand">
+                <span class="logo">Dharmendra Vishwakarma</span>
+                <p>Front-End Developer focused on responsive, accessible UI engineering.</p>
+            </div>
+            <div class="footer-links">
+                <a href="#home">Home</a>
+                <a href="#about">About</a>
+                <a href="#portfolio">Projects</a>
+                <a href="#contact">Contact</a>
+            </div>
+            <div class="footer-social">
+                <a href="https://github.com/Dharmendra0202" target="_blank" rel="noopener noreferrer">GitHub</a>
+                <a href="https://www.linkedin.com/in/dharmendra-vishwakarma-7b6716344/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+                <a href="mailto:dv45564@gmail.com">Email</a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <span>© 2026 Dharmendra Vishwakarma. All rights reserved.</span>
+        </div>
+    </footer>
+
+    <!-- Load the particles.js library -->
+    <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
+    <!-- Load the EmailJS library -->
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
